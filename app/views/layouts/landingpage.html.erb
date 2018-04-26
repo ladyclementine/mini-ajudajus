@@ -4,25 +4,17 @@
       <title>Rayane</title>
       <%= csrf_meta_tags %>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true">
-      <meta name="language" content="pt-br" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- <meta name="language" content="pt-br" />
       <meta name="author" content="SONU Acadêmico" />
       <meta name="description" content="Programa de Extensão Universitário - Modelo de Simulações de Organismos Internacionais" />
-      <meta name="keywords" content="sonu onu academico ufc simulacao">
+      <meta name="keywords" content="sonu onu academico ufc simulacao"> -->
       <%= stylesheet_link_tag  'landingpage', media: 'all', 'data-turbolinks-track' => true %>
-      <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
-    #   <%= javascript_include_tag 'toast_site'%>
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">>
 
    </head>
    <body>
-      <%= javascript_include_tag 'landingpage' %>
-
-    #   <% flash.each do |key, value| %>
-    #     <script type="text/javascript">
-    #        toastr.<%= key=='alert' ? 'error' : key %>('<span><%= value %></span>', "Aviso");
-    #     </script>
-    #   <% end %>
-      
+    <%= render "layouts/shared/shared" %>
+    <%= javascript_include_tag 'landingpage' %>
    </body>
 </html>

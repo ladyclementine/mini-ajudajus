@@ -7,4 +7,3 @@
 //= require landingpage/jquery.stellar.min.js
 //= require landingpage/owl.carousel.min.js
 //= require landingpage/main.js
-

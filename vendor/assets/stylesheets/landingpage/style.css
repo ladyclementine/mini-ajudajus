@@ -95,6 +95,7 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100%;
   padding: 0;
   z-index: 1001;
+  background: rgba(76, 74, 138, 0.9);
 }
 .fh5co-nav .top-menu {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -582,10 +583,13 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-started,
 #fh5co-project,
 #fh5co-about,
-#fh5co-contact,
-#fh5co-footer {
-  padding: 5em 0;
+#fh5co-contact
+{
+  padding: 4em 0;
   clear: both;
+}
+#fh5co-footer {
+  padding: 2em 0;
 }
 @media screen and (max-width: 768px) {
   #fh5co-services,
@@ -1416,5 +1420,17 @@ h1, h2, h3, h4, h5, h6, figure {
 .js .animate-box {
   opacity: 0;
 }
-
+/* custom css */
+.base{
+  margin-top: 200px;
+  margin-bottom: 20px;
+}
+.custom-btn{
+  background: transparent;
+  color: #FC5185;
+  border: 2px solid #FC5185;
+}
+.custom-btn:hover{
+  color: #FC5185;
+}
 /*# sourceMappingURL=style.css.map */

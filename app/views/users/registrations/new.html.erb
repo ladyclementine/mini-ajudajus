@@ -1,29 +1,67 @@
-<h2>Sign up</h2>
+<div id="fh5co-contact" class="main-form">
+    <div class="container">
+        <div class="row form-group text-center">
+            <h3>Já possui conta?</h3>
+            <div class="form-group">
+                <%= link_to 'Login', new_user_session_path, class:"btn custom-btn"%>
+            </div>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= flash_message %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <% if @user.errors.any? %>
+        <script>
+         $(document).ready(function() {
+          noty({text: '<ul><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>', layout: 'bottom', type: 'warning', timeout: 4000});
+        });
+        </script>
+      <% end %>
+        <div class="row form-login">
+            <div class="col-md-12 animate-box">
+               <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "custom-form-login"}) do |f| %>
+                <h3>Informações cadastrais:</h3>
+                <%= devise_error_messages! %>
+                  <div class="row form-group">
+                      <div class="col-md-12">
+                          <%= f.text_field :first_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu primeiro nome"%>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                          <%= f.text_field :last_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu primeiro nome"%>
+                      </div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col-md-12">
+                          <%= f.email_field :email, autofocus: true, id:"email", class:"form-control", placeholder:"Seu email"%>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                          <%= f.password_field :password, autofocus: true, id:"password", class:"form-control", placeholder:"Sua senha"%>
+                      </div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col-md-12">
+                          <%= f.select :state, ['CE', 'SP', 'RJ', 'BH', 'PE'], { include_blank: true }, {:class => 'form-control'}%>
+                      </div>
+                  </div>
+                  <div class="row form-group">
+                        <div class="col-md-6">
+                            <span>Seu avatar:</span>
+                            <%= f.file_field :avatar, class:"form-control"%>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= f.submit "Enviar", class:"btn btn-primary"%>
+                    </div>
+                </div>
+            <% end %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>

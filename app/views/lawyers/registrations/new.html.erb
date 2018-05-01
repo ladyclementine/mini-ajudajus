@@ -1,17 +1,24 @@
-<div class="base">
+<div id="fh5co-contact" class="main-form">
   <div class="container">
-      <h3>Informações cadastrais:</h3>
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+    <%= flash_message %>
+    <% if @lawyer.errors.any? %>
+    <script>
+     $(document).ready(function() {
+      noty({text: '<ul><% @lawyer.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>', layout: 'bottom', type: 'warning', timeout: 4000});
+    });
+    </script>
+  <% end %>
+  <div class="row form-login">
+      <div class="col-md-12 animate-box">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "custom-form-login"}) do |f| %>
+      <h3>Informações cadastrais:</h3>  
+      <%= devise_error_messages! %>
             <div class="row form-group">
                   <div class="col-md-6">
-                      <!-- <label for="fname">First Name</label> -->
-                      <input type="text" id="fname" class="form-control" placeholder="Seu primeiro nome">
+                      <%= f.text_field  :first_name, id:"firstname", class:"form-control", placeholder:"Seu primeiro nome", type: "text", autofocus: true %>
                   </div>
                   <div class="col-md-6">
-                      <!-- <label for="lname">Last Name</label> -->
-                      <input type="text" id="lname" class="form-control" placeholder="Seu último nome">
+                      <%= f.text_field  :last_name, id:"lastname", class:"form-control", placeholder:"Seu último nome", type: "text", autofocus: true %>
                   </div>
               </div>
 
@@ -24,22 +31,20 @@
                   </div>
               </div>
               <div class="row form-group">
-                  <div class="col-md-12">
-                      <!-- <label for="exampleFormControlSelect1">Example select</label> -->
-                      <select class="form-control" id="exampleFormControlSelect1">
-                      <option value="" disabled selected hidden>O estado onde você mora</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      </select>
-                      </div>
-              </div>
+                    <div class="col-md-12">
+                        <%= f.select :state, ['CE', 'SP', 'RJ', 'BH', 'PE'], { include_blank: false }, {:class => 'form-control'}%>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <%= f.file_field :avatar, class:"form-control"%>
+                    </div>
+                </div>
             <div class="form-group">
-              <%= f.submit "Enviar",  class:"btn btn-primary"%>ou 
-               <%= render "lawyers/shared/links" %>
+              <%= f.submit "Enviar",  class:"btn btn-primary"%>
             </div>
-      <% end %>
+            <% end %>
+        </div>
+    </div>
   </div>
 </div>

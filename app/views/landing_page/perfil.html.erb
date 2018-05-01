@@ -1,0 +1,60 @@
+<div id="fh5co-services" class="main-form">
+		<div class="container">
+			<div class="alert alert-danger" role="alert" aria-label="Close">
+				<%= flash_message %>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="fhco-cta-block">
+						<div class="row avatar-row">
+							<% if @user.avatar != nil %>
+							<%= image_tag @user.avatar_url, class:'avatar'%>
+							<% end %>
+						</div>
+						<div class="row">
+							<%= render 'edit' %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="fhco-cta-block">
+						<h2><strong>Olá,</strong> <%= @user.first_name %> <%= @user.last_name %> de <%= @user.state %> </h2>
+						<h2><%= @user.email %></h2>
+						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+						<form action="#" id="fh5co-subscribe">
+							<div class="form-group">
+								<label for="email">Enter Email</label>
+								<input type="text" class="form-control" id="email">
+								<button class="btn btn-primary">Send</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+                <% if @user.lawyer_id == nil %>
+					<div class="fhco-cta-block">
+						<h2>Encontre o advogado que mais se encaixa com você!</h2>
+						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                        <p><%= link_to 'Clique aqui!', advogado_match_path, method: :get, class: "btn btn-primary"%>
+                        </p>
+					</div>
+                <% end %>
+                <% if @user.lawyer_id != nil %>
+                <div class="fhco-cta-block">
+					<div class="row avatar-flex-row">
+						<span>Seu advogado: <h2> <%= @user.lawyer.first_name %> <%= @user.lawyer.last_name %> de <%= @user.lawyer.state %></h2> </span>
+					</div>
+					<div class="row avatar-flex-row">
+						<% if @user.lawyer.avatar != nil %>
+							<%= image_tag @user.lawyer.avatar, class:'avatar' %>
+						<% end %>
+					</div>
+                    <h2><%= @user.lawyer.email %></h2>
+                    
+                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                </div>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div>

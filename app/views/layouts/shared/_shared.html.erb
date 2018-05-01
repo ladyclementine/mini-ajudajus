@@ -1,13 +1,12 @@
+<div id="page">
 <nav class="fh5co-nav" role="navigation">
 <div class="top">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 text-right">
-                <p class="num">Call: +01 123 456 7890</p>
                 <ul class="fh5co-social">
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-github"></i></a></li>
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-instagram"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -17,24 +16,29 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-2">
-                <div id="fh5co-logo"><a href="index.html">M.AjudaJus<span>.</span></a></div>
+                <div id="fh5co-logo"><%= link_to 'M.AjudaJus', root_path %><span>.</span></div>
             </div>
             <div class="col-xs-10 text-right menu-1">
                 <ul>
-                    <!-- <li class="active"><a href="index.html">Home</a></li> -->
-                    <li><%=link_to 'Home', root_path%></li>
-                    <!-- <li><a href="about.html">About</a></li>
-                    <li class="has-dropdown">
-                        <a href="services.html">Services</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">eCommerce</a></li>
-                            <li><a href="#">Branding</a></li>
-                            <li><a href="#">API</a></li>
-                        </ul>
-                    </li> -->
-                    <li class="active"><a href="contact.html">Contact</a></li>
-                    <li class="btn-cta"><a href="#"><span>Login</span></a></li>
+                    <li><%=link_to 'Início', root_path%></li>
+                    <% if user_signed_in? %>
+                         <li class="has-dropdown">
+                            <%= link_to 'Minha conta ↓ ', class: "link-top" %>
+                            <ul class="dropdown">
+                                <li><%= link_to 'Perfil', perfil_path %></li>
+                                <!-- <li><a href="#">eCommerce</a></li>
+                                <li><a href="#">Branding</a></li> -->
+                                <li><%= link_to(destroy_user_session_path, :method => :get)  do %>
+                                    Sair
+                                <% end %></li>
+                            </ul>
+                        </li>
+                        <% else %>
+                        <li  class="btn-cta">
+                            <%=link_to new_user_session_path do %>
+                            <span>Login</span>
+                        <% end %>
+                    <% end %>
                 </ul>
             </div>
         </div>
@@ -47,7 +51,7 @@
         <div class="container">
             <div class="row copyright">
                 <div class="col-md-12 text-center">
-                    <p>
+                    <p class="custom-footer">
                         <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
                         <small class="block"> Customized by Rayane Santos</small> 
                     </p>
@@ -59,3 +63,4 @@
     <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
     </div>
+</div>

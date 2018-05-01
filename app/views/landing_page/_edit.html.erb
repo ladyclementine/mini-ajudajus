@@ -1,0 +1,7 @@
+<%= form_for @user, url: { :action => "update" }, html: { id: "edit_avatar_user", method: :put } do |f| %>
+<%= f.label :avatar, class: "label-file" do%>
+<span>Selecionar</span>
+<% end %>
+<%= f.file_field :avatar, class:"form-control file-avatar"%>
+<%= f.submit 'Atualizar', class:"btn btn-primary" %>
+<% end %>

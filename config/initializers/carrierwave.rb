@@ -10,9 +10,9 @@ CarrierWave.configure do |config|
     config.fog_attributes = { 'Cache-Control': 'max-age=315576000' }
 
     config.fog_credentials = {
-      provider =                'AWS'
-      aws_access_key_id =      Rails.application.secrets.s3_access_key_id,  
-      aws_secret_access_key =  Rails.application.secrets.s3_secret_access_key, 
+      :provider =>               'AWS'
+      :aws_access_key_id =>      Rails.application.secrets.s3_access_key_id,  
+      :aws_secret_access_key =>  Rails.application.secrets.s3_secret_access_key, 
     }
   end
 end

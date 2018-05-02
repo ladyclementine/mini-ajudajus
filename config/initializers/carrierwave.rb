@@ -7,6 +7,6 @@ if Rails.env.production?
       :aws_secret_access_key => Rails.application.secrets.s3_secret_access_key,
       :region                => 'sa-east-1'
     }
-    config.fog_directory     =  :fog
+    config.fog_directory     =>  :fog
   end
 end

@@ -12,11 +12,10 @@ class Lawyers::RegistrationsController < Devise::RegistrationsController
     @lawyer = Lawyer.new(sign_up_params)
     set_minimum_password_length
     print(@lawyer)
-    print(lawyer_signed_in?)
       if @lawyer.save
-        flash[:success] = "Inscrição realizada com sucesso, aguarde a análise de dados da equipe."
         redirect_to root_path
       else
+        flash[:error] = 'Um erro ocorreu, não foi possível processar sua inscrição'
         render :new
       end
   end

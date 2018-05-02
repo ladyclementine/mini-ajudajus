@@ -12,11 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(sign_up_params)
     set_minimum_password_length
     if @user.save
-      flash[:success] = 'Inscrição realizada. Agora você pode desfrutar dos eventos da SONU.'
       redirect_to new_user_session_path
     else
-      flash[:error] = 'Um erro ocorreu, não foi possível processar sua inscrição'
-      # render json: @user.errors 
+      flash[:error] = 'Um erro ocorreu, não foi possível processar sua inscrição' 
       render :new
     end
   end
@@ -48,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :avatar, :state, :first_name, :last_name)
+    params.require(:user).permit(:avatar, :state, :first_name, :last_name, :email, :password, :password_confirmation)
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

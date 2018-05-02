@@ -11,8 +11,10 @@
   <div class="row form-login">
       <div class="col-md-12 animate-box">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "custom-form-login"}) do |f| %>
-      <h3>Informações cadastrais:</h3>  
-      <%= devise_error_messages! %>
+      <h3>Informações cadastrais Advogado:</h3>  
+      <div class="alert alert-danger" role="alert" aria-label="Close">
+        <%= devise_error_messages! %>
+     </div>
             <div class="row form-group">
                   <div class="col-md-6">
                       <%= f.text_field  :first_name, id:"firstname", class:"form-control", placeholder:"Seu primeiro nome", type: "text", autofocus: true %>
@@ -32,11 +34,13 @@
               </div>
               <div class="row form-group">
                     <div class="col-md-12">
+                        <span>O estado em que você atua:</span>
                         <%= f.select :state, ['CE', 'SP', 'RJ', 'BH', 'PE'], { include_blank: false }, {:class => 'form-control'}%>
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
+                        <span>Seu avatar:</span>
                         <%= f.file_field :avatar, class:"form-control"%>
                     </div>
                 </div>

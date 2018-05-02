@@ -6,12 +6,12 @@
                 <%= link_to 'Login', new_user_session_path, class:"btn custom-btn"%>
             </div>
         </div>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <%= flash_message %>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-        </div>
+        </div> -->
         <% if @user.errors.any? %>
         <script>
          $(document).ready(function() {
@@ -22,8 +22,10 @@
         <div class="row form-login">
             <div class="col-md-12 animate-box">
                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "custom-form-login"}) do |f| %>
-                <h3>Informações cadastrais:</h3>
+                <h3>Informações cadastrais Cliente:</h3>
+                <div class="alert alert-danger" role="alert" aria-label="Close">
                 <%= devise_error_messages! %>
+                </div>
                   <div class="row form-group">
                       <div class="col-md-12">
                           <%= f.text_field :first_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu primeiro nome"%>
@@ -46,11 +48,12 @@
                   </div>
                   <div class="row form-group">
                       <div class="col-md-12">
-                          <%= f.select :state, ['CE', 'SP', 'RJ', 'BH', 'PE'], { include_blank: true }, {:class => 'form-control'}%>
+                          <span>O estado em que você atua:</span>
+                          <%= f.select :state, ['CE', 'SP', 'RJ', 'BH', 'PE'], { include_blank: false }, {:class => 'form-control'}%>
                       </div>
                   </div>
                   <div class="row form-group">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <span>Seu avatar:</span>
                             <%= f.file_field :avatar, class:"form-control"%>
                         </div>

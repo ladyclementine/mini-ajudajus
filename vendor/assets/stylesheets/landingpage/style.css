@@ -1522,4 +1522,7 @@ input[type='file'].file-avatar  {
   justify-content: center;
   margin-top: 23px;
 }
+#error_explanation h2{
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

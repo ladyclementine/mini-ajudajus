@@ -5,8 +5,8 @@ if Rails.env.production?
       :provider              => 'AWS',
       :aws_access_key_id     => Rails.application.secrets.s3_access_key_id,
       :aws_secret_access_key => Rails.application.secrets.s3_secret_access_key,
-      :region                => 'sa-east-1',
+      :region                => 'sa-east-1'
     }
-    config.fog_directory     =>  :fog
+      config.fog_directory     =  'miniajudajus'
   end
 end

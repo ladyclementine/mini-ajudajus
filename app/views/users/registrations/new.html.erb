@@ -23,17 +23,19 @@
             <div class="col-md-12 animate-box">
                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "custom-form-login"}) do |f| %>
                 <h3>Informações cadastrais Cliente:</h3>
+                <% if !devise_error_messages!.blank? %>
                 <div class="alert alert-danger" role="alert" aria-label="Close">
                 <%= devise_error_messages! %>
                 </div>
+                <% end %>
                   <div class="row form-group">
                       <div class="col-md-12">
-                          <%= f.text_field :first_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu primeiro nome"%>
+                          <%= f.text_field :first_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu nome"%>
                       </div>
                     </div>
                     <div class="row form-group">
                       <div class="col-md-12">
-                          <%= f.text_field :last_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu primeiro nome"%>
+                          <%= f.text_field :last_name, autofocus: true, id:"first_name", class:"form-control", placeholder:"Seu sobrenome"%>
                       </div>
                   </div>
                   <div class="row form-group">
@@ -48,8 +50,8 @@
                   </div>
                   <div class="row form-group">
                       <div class="col-md-12">
-                          <span>O estado em que você atua:</span>
-                          <%= f.select :state, ['CE', 'SP', 'RJ', 'BH', 'PE'], { include_blank: false }, {:class => 'form-control'}%>
+                          <span>O estado em que você mora:</span>
+                          <%= f.select :state, ['Acre-AC', 'Alagoas-AL','Amapá-AP','Amazonas-AM', 'Bahia-BA', 'Ceará-CE', 'Distrito Federal-DF', 'Espírito Santo-ES', 'Goiás-GO', 'Maranhão-MA', 'Mato Grosso-MT', 'Mato Grosso do Sul-MS', 'Minas Gerais-MG', 'Pará-PA', 'Paraíba-PB', 'Paraná-PR', 'Pernambuco-PE', 'Piauí-PI', 'Rio de Janeiro-RJ', 'Rio Grande do Norte-RN', 'Rio Grande do Sul-RS', 'Rondônia-RO', 'Roraima-RR', 'Santa Catarina-SC', 'São Paulo-SP', 'Sergipe-SE', 'Tocantins-TO'], { include_blank: false }, {:class => 'form-control'}%>
                       </div>
                   </div>
                   <div class="row form-group">
